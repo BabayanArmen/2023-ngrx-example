@@ -1,0 +1,11 @@
+<p>posts works!</p>
+<button routerLink="add">add</button>
+<ul>
+    <li *ngFor="let post of posts">
+        <span>title : {{post.title}}</span>
+        <span> | </span>
+        <span>author : {{post.author}}</span>
+        <button [routerLink]="'edit/' + post.id">edit</button>
+        <button (click)="onDelete(post.id!)">delete</button>
+    </li>
+</ul>

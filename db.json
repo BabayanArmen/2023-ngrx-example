@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "title": "aaaasdasda",
+      "author": "asdasd",
+      "id": 1
+    },
+    {
+      "title": "1",
+      "author": "2",
+      "id": 2
+    },
+    {
+      "title": "asdcasdcwqef",
+      "author": "wqefqwef",
+      "id": 3
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
