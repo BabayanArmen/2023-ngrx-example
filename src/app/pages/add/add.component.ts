@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Post } from 'src/app/models/post.model';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent {
+  public post: Post = {} as Post;
 
   constructor(private postService: PostsService, private router: Router) {}
 
-  onAdd(title: string, author: string) {
-    this.postService.add({title, author}).subscribe(res => {
+  onAdd() {
+    this.postService.add(this.post).subscribe(res => {
       this.router.navigate(['/']);
     })
   };

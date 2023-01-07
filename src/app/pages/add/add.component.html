@@ -1,4 +1,4 @@
 <p>add works!</p>
-<input type="text" #title>
-<input type="text" #author>
-<button (click)="onAdd(title.value, author.value)">add</button>
+<input type="text" [(ngModel)]="post.title">
+<input type="text" [(ngModel)]="post.author">
+<button (click)="onAdd()">add</button>
