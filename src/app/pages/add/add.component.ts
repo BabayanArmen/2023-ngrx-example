@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.model';
-import { PostsService } from 'src/app/services/posts.service';
+import { FutureState } from 'src/app/store/store-initial-stae.interface';
+import * as PostsActions from '../../store/actions/post.actions';
 
 @Component({
   selector: 'app-add',
@@ -11,12 +13,13 @@ import { PostsService } from 'src/app/services/posts.service';
 export class AddComponent {
   public post: Post = {} as Post;
 
-  constructor(private postService: PostsService, private router: Router) {}
+  constructor(
+    private strore: Store<FutureState>,
+    private router: Router) {}
 
   onAdd() {
-    this.postService.add(this.post).subscribe(res => {
-      this.router.navigate(['/']);
-    })
+    this.strore.dispatch(PostsActions.addPostApi({post: this.post}));
+    this.router.navigate(['/']);
   };
 
 }

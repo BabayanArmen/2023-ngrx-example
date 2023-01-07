@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## NGRX install
+
+1. Developer tool
+* Add Redux DevTools in chrome browser
+* Install npm install @ngrx/store-devtools --save
+
+2. Install ngrx store
+* npm install @ngrx/store --save
+
+3. Install effects
+* npm install @ngrx/effects --save
+
+## how to run json server
+json-server --watch db.json

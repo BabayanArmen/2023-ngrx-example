@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post.model';
-import { PostsService } from 'src/app/services/posts.service';
+import { Store } from '@ngrx/store';
+import { FutureState } from 'src/app/store/store-initial-stae.interface';
+import { PostsService } from '../../services/posts.service';
+import * as PostsActions from '../../store/actions/post.actions';
+import * as PostsSelector from '../../store/selectors/posts.selectors';
 
 @Component({
   selector: 'app-posts',
@@ -8,20 +11,14 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-  posts: Post[] = [];
+  public posts$ = this.store.select(PostsSelector.slectAllPosts);
   
-  constructor(private postService: PostsService) {}
+  constructor(private store: Store<FutureState>) {}
 
-  ngOnInit(): void {
-    this.postService.get().subscribe(res => {
-      this.posts = res as any[]
-    });
-  }
+  ngOnInit(): void { }
 
   onDelete(id: number) {
-    this.postService.delete(id).subscribe(res => {
-      this.posts = this.posts.filter(el => el.id !== id);
-    });
+    this.store.dispatch(PostsActions.deletePostApi({id}));
   }
 
 }

@@ -1,7 +1,7 @@
 <p>posts works!</p>
 <button routerLink="add">add</button>
 <ul>
-    <li *ngFor="let post of posts">
+    <li *ngFor="let post of posts$ | async">
         <span>title : {{post.title}}</span>
         <span> | </span>
         <span>author : {{post.author}}</span>

@@ -1,3 +1,11 @@
-<input type="text" placeholder="title" [(ngModel)]="post!.title">
-<input type="text" placeholder="author" [(ngModel)]="post!.author">
-<button (click)="onEdit()">save</button>
+<div *ngIf="post$ | async" [formGroup]="form">
+    <input type="text" placeholder="title" formControlName="title">
+    <input type="text" placeholder="author" formControlName="author">
+    <button (click)="onEdit()">save</button>
+</div>
+
+<!-- <div *ngIf="post$ | async as post">
+    <input type="text" placeholder="title" [(ngModel)]="post!.title">
+    <input type="text" placeholder="author" [(ngModel)]="post!.author">
+    <button (click)="onEdit(post)">save</button>
+</div> -->

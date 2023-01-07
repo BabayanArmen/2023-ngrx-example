@@ -10,23 +10,23 @@ export class PostsService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Post[]> {
+  getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>('http://localhost:3000/posts');
   }
 
-  getById(id: number) {
-    return this.http.get('http://localhost:3000/posts'+'/'+id);
+  getById(id: number): Observable<Post> {
+    return this.http.get<Post>('http://localhost:3000/posts'+'/'+id);
   }
 
-  add(post: Post): Observable<any> {
-    return this.http.post('http://localhost:3000/posts', post);
+  add(post: Post): Observable<Post> {
+    return this.http.post<Post>('http://localhost:3000/posts', post);
   }
 
-  edit(post: Post): Observable<any> {
-    return this.http.put('http://localhost:3000/posts'+'/'+post.id, post);
+  edit(post: Post): Observable<Post> {
+    return this.http.put<Post>('http://localhost:3000/posts' + '/' + post.id, post);
   }
 
-  delete(id: number): Observable<any> {
-    return this.http.delete('http://localhost:3000/posts'+'/'+id);
+  delete(id: number): Observable<{}> {
+    return this.http.delete<{}>('http://localhost:3000/posts'+'/'+id);
   }
 }
